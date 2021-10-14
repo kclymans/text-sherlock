@@ -2,6 +2,7 @@
 # -*- coding: utf-8 -*-
 
 import cgi
+import html
 import codecs
 from datetime import datetime
 from core.sherlock import logger as log
@@ -94,7 +95,7 @@ def fragment_text(token, text):
     if prevIdx < 0:
         prevIdx = 0
     # escape html before adding our own html for highlighting
-    token_text = cgi.escape(text[prevIdx:nextIdx])
+    token_text = html.escape(text[prevIdx:nextIdx])
     # replace html highlighter placeholders
     token_text = token_text.replace('[ts[[', settings.MATCHED_TERM_WRAP[0])
     token_text = token_text.replace(']]ts]', settings.MATCHED_TERM_WRAP[1])
