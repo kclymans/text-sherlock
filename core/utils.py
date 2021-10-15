@@ -24,7 +24,9 @@ def read_file(path, encoding='utf-8'):
             contents = f.read()
         except UnicodeDecodeError as e:
             # re-raise with more information
-            raise Exception('%s: %s' % (e, path))
+            print(f"[ERR] Decode: {e}: {path}")
+            contents=''
+            #raise UnicodeDecodeError('%s: %s' % (e, path))
     return contents
 
 
